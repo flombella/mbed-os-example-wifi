@@ -7,21 +7,29 @@ Esempio preso da https://os.mbed.com/docs/mbed-os/v6.15/apis/wi-fi.html
 Inizialmente verifica se la scheda target è di tipo ODIN_W2 , che supporta 
 direttamente lo stack Ethernet, alrimenti, come fallback, utilizza la ESP8266 che viene
 gestita mediante comandi AT  . 
-
+Le costanti MBED_CONF_ESP8266_TX(MBED_CONF_ESP8266_ vengono impostate automaticamente sulla base della scheda selezionata 
+Connettere ai relativi piedini i segnali Tx e Rx della ESP8266 ( UART1) 
+Per identificare i piedini della UART 1 fare riferimento 
+alle piedinature fornite da mbed, vedi ad esempio https://os.mbed.com/platforms/ST-Nucleo-F401RE/ . 
 
  */
 #include "mbed.h"
 #include "TCPSocket.h"
 
+#define TARGET_FF_ARDUINO 1
+
+
 #if TARGET_UBLOX_EVK_ODIN_W2
 #include "OdinWiFiInterface.h"
-OdinWiFiInterface wifi;
+    OdinWiFiInterface wifi;
 #else
-/*#if !TARGET_FF_ARDUINO
-#error [NOT_SUPPORTED] Only Arduino form factor devices are supported at this time
-#endif */
+#if !TARGET_FF_ARDUINO
+   #error [NOT_SUPPORTED] Only Arduino form factor devices are supported at this time
+#endif
 #include "ESP8266Interface.h"
-ESP8266Interface wifi(MBED_CONF_ESP8266_RX, MBED_CONF_ESP8266_TX);
+
+ESP8266Interface wifi(MBED_CONF_ESP8266_TX, MBED_CONF_ESP8266_RX);
+
 #endif
 
 
@@ -51,13 +59,14 @@ void scan_demo(WiFiInterface *wifi)
 
     printf("Scan:\r\n");
 
-    int count = wifi->scan(NULL, 0); wifi->
+    int count = wifi->scan(NULL, 0); 
 
     /* Limit number of network arbitrary to 15 */
     count = count < 15 ? count : 15;
 
     ap = new WiFiAccessPoint[count];
-
+    //ap = new WiFiAccessPoint[count];
+    
     count = wifi->scan(ap, count);
     for (int i = 0; i < count; i++) {
         printf("Network: %s secured: %s BSSID: %hhX:%hhX:%hhX:%hhx:%hhx:%hhx RSSI: %hhd Ch: %hhd\r\n", ap[i].get_ssid(),

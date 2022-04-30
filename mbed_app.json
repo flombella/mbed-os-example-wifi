@@ -11,12 +11,12 @@
     "target_overrides": {
         "*": {
             "nsapi.default-wifi-security":"WPA_WPA2",
-            "nsapi.default-wifi-ssid": "\"CLMB\"",
-            "nsapi.default-wifi-password": "\"Gir@soli2003\"",
+            "nsapi.default-wifi-ssid": "\"WiFIMarcoPoloR\"",
+            "nsapi.default-wifi-password": "\"marconia\"",
             "platform.stdio-baud-rate": 115200,
             "mbed-trace.enable": false,
-            "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
-            "rtos.main-thread-stack-size": 8192
+            "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",           
+            "rtos.main-thread-stack-size": 2048
         },
         "DISCO_F413ZH": {
             "target.components_add": ["ism43362"],
@@ -36,8 +36,9 @@
         },
         "NUCLEO-F401RE": {
             "target.network-default-interface-type": "WIFI",
-            "esp8266.tx": "ARDUINO_UNO_D8",
-            "esp8266.rx": "ARDUINO_UNO_D7",
+            
+            "esp8266.tx": "ARDUINO_UNO_D0",
+            "esp8266.rx": "ARDUINO_UNO_D1",
             "target.macros_add" : ["MBEDTLS_SHA1_C"]
         }
     }
