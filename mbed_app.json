@@ -11,8 +11,8 @@
     "target_overrides": {
         "*": {
             "nsapi.default-wifi-security":"WPA_WPA2",
-            "nsapi.default-wifi-ssid": "\"Nome_rete\"",
-            "nsapi.default-wifi-password": "\"Password\"",
+            "nsapi.default-wifi-ssid": "\"CLMB\"",
+            "nsapi.default-wifi-password": "\"Gir@soli2003\"",
             "platform.stdio-baud-rate": 115200,
             "mbed-trace.enable": false,
             "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",

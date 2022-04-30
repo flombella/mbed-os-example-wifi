@@ -51,7 +51,7 @@ void scan_demo(WiFiInterface *wifi)
 
     printf("Scan:\r\n");
 
-    int count = wifi->scan(NULL, 0);
+    int count = wifi->scan(NULL, 0); wifi->
 
     /* Limit number of network arbitrary to 15 */
     count = count < 15 ? count : 15;
