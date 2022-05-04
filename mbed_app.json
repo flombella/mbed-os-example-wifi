@@ -11,7 +11,7 @@
     "target_overrides": {
         "*": {
             "nsapi.default-wifi-security":"WPA_WPA2",
-            "nsapi.default-wifi-ssid": "\"WiFIMarcoPoloR\"",
+            "nsapi.default-wifi-ssid": "\"WIFI-MarcoPolo-R\"",
             "nsapi.default-wifi-password": "\"marconia\"",
             "platform.stdio-baud-rate": 115200,
             "mbed-trace.enable": false,
@@ -39,6 +39,12 @@
             
             "esp8266.tx": "ARDUINO_UNO_D0",
             "esp8266.rx": "ARDUINO_UNO_D1",
+            "target.macros_add" : ["MBEDTLS_SHA1_C"]
+        },
+        "NUCLEO-F746ZG": {
+            "target.network-default-interface-type": "WIFI",
+            "esp8266.provide-default": true,
+            
             "target.macros_add" : ["MBEDTLS_SHA1_C"]
         }
     }
